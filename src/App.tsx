@@ -83,7 +83,8 @@ export const App = () => {
       messages.push(
         "Take another point of damage each minute until receiving medical attention"
       );
-    } else if (boxes.every((value) => value >= DamageType.Bashing)) {
+    }
+    if (boxes.every((value) => value >= DamageType.Bashing)) {
       messages.push(
         "Make a reflexive Stamina roll each turn to remain conscious"
       );
