@@ -7,9 +7,9 @@
     "name": "Celeo"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "lint": "tsc --noEmit && eslint src/**/*.{ts,tsx} && prettier --check src",
     "lint:fix": "eslint --fix src/**/*.{ts,tsx} && prettier -w src"
   },
@@ -21,11 +21,14 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "autoprefixer": "^9",
+    "postcss": "^7",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "surge": "^0.23.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "ts-jest": "^27.0.3",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
@@ -47,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "dependencies": {
+    "@craco/craco": "^6.4.0"
   }
 }
