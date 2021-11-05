@@ -16,5 +16,4 @@ jobs:
           node-version: 12.x
       - run: yarn
       - run: yarn build
-      - run: yarn test
       - run: npx surge build ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
