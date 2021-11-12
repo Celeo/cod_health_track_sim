@@ -9,14 +9,10 @@ enum DamageType {
 }
 
 export const App = () => {
-  const [boxes, setBoxes] = useState([
-    DamageType.Empty,
-    DamageType.Empty,
-    DamageType.Empty,
-    DamageType.Empty,
-    DamageType.Empty,
-    DamageType.Empty,
-  ]);
+  const trackSize = parseInt(
+    new URL(window.location.toString()).searchParams.get("size") || "6"
+  );
+  const [boxes, setBoxes] = useState(Array(trackSize).fill(DamageType.Empty));
 
   const add = (type: DamageType) => {
     const newBoxes = [...boxes];
@@ -33,7 +29,7 @@ export const App = () => {
     if (type === DamageType.Aggravated) {
       // insert at start and push everything else over
       newBoxes.unshift(DamageType.Aggravated);
-      setBoxes(newBoxes.slice(0, 6).sort().reverse());
+      setBoxes(newBoxes.slice(0, trackSize).sort().reverse());
       return;
     } else {
       const indexOfBashing = newBoxes.findIndex(
@@ -55,14 +51,7 @@ export const App = () => {
   };
 
   const reset = () => {
-    setBoxes([
-      DamageType.Empty,
-      DamageType.Empty,
-      DamageType.Empty,
-      DamageType.Empty,
-      DamageType.Empty,
-      DamageType.Empty,
-    ]);
+    setBoxes(Array(trackSize).fill(DamageType.Empty));
   };
 
   const isDead = (): boolean =>
@@ -73,7 +62,7 @@ export const App = () => {
 
   const effects = (): Array<string> => {
     if (isFullHealth()) {
-      return ["None"];
+      return [];
     }
     if (isDead()) {
       return ["You're dead"];
